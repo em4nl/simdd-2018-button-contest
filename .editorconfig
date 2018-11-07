@@ -1,0 +1,6 @@
+[*]
+indent_style = space
+indent_size = 2
+
+[*.php,runtask]
+indent_size = 4

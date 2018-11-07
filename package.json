@@ -1,0 +1,45 @@
+{
+  "name": "Buttons",
+  "version": "0.0.1",
+  "description": "Collection of Buttons from SIMDD unfun workshop",
+  "main": "./scripts/main.js",
+  "scripts": {
+    "install": "./runtask install",
+    "build": "./runtask build",
+    "bundlesize": "./runtask bundlesize",
+    "devserver": "./runtask devserver",
+    "stage": "./runtask stage",
+    "stage_devbuild": "./runtask stage_devbuild",
+    "deploy": "./runtask deploy",
+    "customizr": "./runtask customizr_"
+  },
+  "author": "unfun <info@unfun.de>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "assets-webpack-plugin": "^3.9.6",
+    "autoprefixer": "^9.1.5",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.2",
+    "css-loader": "^1.0.0",
+    "customizr": "^1.1.0",
+    "file-loader": "^2.0.0",
+    "lint-staged": "^7.2.2",
+    "mini-css-extract-plugin": "^0.4.2",
+    "node-sass": "^4.9.3",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "url-loader": "^1.1.1",
+    "webpack": "^4.17.2",
+    "webpack-bundle-size-analyzer": "^2.7.0",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8"
+  },
+  "dependencies": {
+  },
+  "engines": {
+    "node": "10.9.0"
+  }
+}

@@ -1,0 +1,60 @@
+#!/bin/sh
+
+BASE_DIR=$(dirname "$0")
+
+# include binaries from locally installed node modules
+PATH="${BASE_DIR}/node_modules/.bin/${PATH:+:$PATH}"
+
+install() {
+    customizr_ && composer install && build
+}
+
+customizr_() {
+    customizr -c modernizr.customizr.json
+}
+
+clean() {
+    rm -rf "${BASE_DIR}"/build/bundle.*
+}
+
+build() {
+    clean && _build production
+}
+
+devbuild() {
+    clean && _build development
+}
+
+_build() {
+    mkdir -p "${BASE_DIR}/build" && NODE_ENV="$1" webpack --mode "$1" --colors --progress
+}
+
+bundlesize() {
+    webpack --mode production --json | webpack-bundle-size-analyzer
+}
+
+devserver() {
+    DEVSERVER='true' webpack-dev-server --mode development --color --progress --output-public-path 'http://localhost:8080/build/'
+}
+
+stage() {
+    build && deploy_staging
+}
+
+stage_devbuild() {
+    devbuild && deploy_staging
+}
+
+deploy_staging() {
+    echo 'not yet implemented'
+}
+
+deploy() {
+    build && deploy_production
+}
+
+deploy_production() {
+    echo 'not yet implemented'
+}
+
+"$@"

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>Buttons</title>
+    <meta name="description" content="Buttons" />
+
+    {% if assets.css %}
+      <link
+        rel="stylesheet"
+        href="/build/{{ assets.css|e('html_attr') }}"
+      />
+    {% endif %}
+    <script
+      type="text/javascript"
+      src="/build/modernizr.js"
+    ></script>
+  </head>
+  <body>
+    {% block content %}
+    {% endblock %}
+
+    {% if assets.css %}
+      <script src="/build/{{ assets.js|e('html_attr') }}"></script>
+    {% else %}
+      <script src="{{ assets.js|e('html_attr') }}"></script>
+    {% endif %}
+  </body>
+</html>
