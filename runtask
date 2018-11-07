@@ -37,24 +37,12 @@ devserver() {
     DEVSERVER='true' webpack-dev-server --mode development --color --progress --output-public-path 'http://localhost:8080/build/'
 }
 
-stage() {
-    build && deploy_staging
-}
-
-stage_devbuild() {
-    devbuild && deploy_staging
-}
-
-deploy_staging() {
-    echo 'not yet implemented'
-}
-
 deploy() {
     build && deploy_production
 }
 
 deploy_production() {
-    echo 'not yet implemented'
+  rsync -vzcrSLhp ./ --exclude-from='deploy-excludes.txt' ws2@menkar.uberspace.de:/var/www/virtual/ws2/buttoncontest.unfun.de
 }
 
 "$@"

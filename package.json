@@ -8,8 +8,6 @@
     "build": "./runtask build",
     "bundlesize": "./runtask bundlesize",
     "devserver": "./runtask devserver",
-    "stage": "./runtask stage",
-    "stage_devbuild": "./runtask stage_devbuild",
     "deploy": "./runtask deploy",
     "customizr": "./runtask customizr_"
   },
