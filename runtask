@@ -21,10 +21,6 @@ build() {
     clean && _build production
 }
 
-devbuild() {
-    clean && _build development
-}
-
 _build() {
     mkdir -p "${BASE_DIR}/build" && NODE_ENV="$1" webpack --mode "$1" --colors --progress
 }
