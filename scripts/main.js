@@ -25,13 +25,27 @@ for (let i = 0; i < buttons.length; i++) {
   }
 }
 
-window.on_new_ranking = function(ranking) {
-  console.log(ranking)
-}
-
-window.on_new_vote = function(name, votes) {
+function updateVotesForButton(name, votes) {
   let votesField = document.querySelector(
     `.ranking tr[data-button-name="${name}"] .votes`
   )
   votesField.innerHTML = votes
 }
+
+window.on_new_ranking = function(ranking) {
+  let key
+  for (key in ranking) {
+    if (ranking.hasOwnProperty(key)) {
+      updateVotesForButton(key, ranking[key].votes)
+    }
+  }
+}
+
+window.on_new_vote = updateVotesForButton
+
+function autoUpdate() {
+  get_ranking(() => {
+    setTimeout(autoUpdate, 2000)
+  })
+}
+setTimeout(autoUpdate, 2000)
