@@ -17,8 +17,8 @@ if (!isset($stats[$button_id])) {
     die;
 }
 
-$stats[$button_id]++;
-$stats_json = json_encode($stats);
+$stats[$button_id]['votes']++;
+$stats_json = json_encode($stats, JSON_PRETTY_PRINT);
 $success = file_put_contents(__DIR__ . '/stats.json', $stats_json, LOCK_EX);
 if ($success === FALSE) {
     header('HTTP/1.1 500 Internal Server Error');
