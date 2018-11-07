@@ -4,7 +4,7 @@ import './stats'
 
 function buttonClickHandler() {
   let name = this.getAttribute('data-name')
-  vote_for(name, (err, clicks) => {
+  voteFor(name, (err, ranking) => {
     if (err) {
       let message = `There is no button called "${name}"!`
       if ('error' in console) {
@@ -13,7 +13,8 @@ function buttonClickHandler() {
         console.log('ERROR: ' + message)
       }
     } else {
-      console.log(`The button called "${name}" has ${clicks} clicks already!`)
+      console.log(`The button called "${name}" has ${ranking[name].votes} clicks already!`)
+      updateRanking(ranking)
     }
   })
 }
@@ -32,7 +33,7 @@ function updateVotesForButton(name, votes) {
   votesField.innerHTML = votes
 }
 
-window.on_new_ranking = function(ranking) {
+window.updateRanking = function updateRanking(ranking) {
   let key
   for (key in ranking) {
     if (ranking.hasOwnProperty(key)) {
@@ -41,10 +42,10 @@ window.on_new_ranking = function(ranking) {
   }
 }
 
-window.on_new_vote = updateVotesForButton
+window.onNewRanking = updateRanking
 
 function autoUpdate() {
-  get_ranking(() => {
+  getRanking(() => {
     setTimeout(autoUpdate, 2000)
   })
 }
