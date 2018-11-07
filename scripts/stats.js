@@ -1,70 +1,72 @@
-function ajax(options, callback) {
+window.ajax = function ajax(options, callback) {
   var request = new XMLHttpRequest();
   var method = 'GET';
   var url;
   if (typeof options === 'string') {
-      url = options;
+    url = options;
   } else {
-      method = options.method || method;
-      url = options.url;
+    method = options.method || method;
+    url = options.url;
   }
   request.open(method, url, true);
   request.onload = function() {
-      if (request.status !== 200) {
-          callback(request.status);
-      } else {
-          callback(null, request.responseText);
-      }
+    if (request.status !== 200) {
+      callback(request.status);
+    } else {
+      callback(null, request.responseText);
+    }
   };
   request.onerror = function() {
-      callback(1);
+    callback(1);
   };
   request.send();
 }
-export function get_ranking(callback) {
-  ajax('/stats.json', function(err, res) {
-      if (err) {
-          callback(err);
-      } else {
-          callback(null, JSON.parse(res));
+function responseHandler(callback) {
+  return function(err, res) {
+    var ranking;
+    if (err) {
+      callback(err);
+    } else {
+      ranking = JSON.parse(res);
+      callback(null, ranking);
+      if (window.onNewRanking) {
+        window.onNewRanking(ranking);
       }
-  });
+    }
+  }
 }
-export function vote_for(name, callback) {
+window.getRanking = function getRanking(callback) {
+  ajax('/stats.json', responseHandler(callback));
+}
+window.voteFor = function voteFor(name, callback) {
   ajax({
-      url: '/stats.php?vote=' + name,
-      method: 'POST',
-  }, function(err, res) {
-      if (err) {
-          callback(err);
-      } else {
-          callback(null, parseInt(res));
-      }
-  });
+    url: '/stats.php?vote=' + name,
+    method: 'POST',
+  }, responseHandler(callback));
 }
-export function console_get_ranking() {
+window.consoleGetRanking = function consoleGetRanking() {
   get_ranking(function(err, ranking) {
-      if (err) {
-          if ('error' in console) {
-              console.error(err);
-          } else {
-              console.log('ERROR', err);
-          }
+    if (err) {
+      if ('error' in console) {
+        console.error(err);
       } else {
-          console.log(ranking);
+        console.log('ERROR', err);
       }
+    } else {
+      console.log(ranking);
+    }
   });
 }
-export function console_vote_for(name) {
-  vote_for(name, function(err, clicks) {
-      if (err) {
-          if ('error' in console) {
-              console.error(err);
-          } else {
-              console.log('ERROR', err);
-          }
+window.consoleVoteFor = function consoleVoteFor(name) {
+  vote_for(name, function(err, ranking) {
+    if (err) {
+      if ('error' in console) {
+        console.error(err);
       } else {
-          console.log(clicks);
+        console.log('ERROR', err);
       }
+    } else {
+      console.log(ranking[name].votes);
+    }
   });
 }

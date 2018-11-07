@@ -7,30 +7,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>0</td>
-      <td>XYZ Button</td>
-      <td>Martina Mustermann</td>
+    {% for button_name, button in stats %}
+    <tr data-button-name="{{ button_name }}">
+      <td class="votes">{{ button.votes }}</td>
+      <td class="name">{{ button.name }}</td>
+      <td class="author">{{ button.author }}</td>
     </tr>
-    <tr>
-      <td>1</td>
-      <td>XYZ Button</td>
-      <td>Martina Mustermann</td>
-    </tr>
-    <tr>
-      <td>1000</td>
-      <td>XYZ Button</td>
-      <td>Martina Mustermann</td>
-    </tr>
-    <tr>
-      <td>10</td>
-      <td>XYZ Button</td>
-      <td>Martina Mustermann</td>
-    </tr>
-    <tr>
-      <td>0</td>
-      <td>XYZ Button</td>
-      <td>Max Mustermann</td>
-    </tr>
+    {% endfor %}
   </tbody>
 </table>

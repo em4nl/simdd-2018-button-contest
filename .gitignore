@@ -9,6 +9,7 @@ composer.lock
 package-lock.json
 webpack-assets.json
 wpsync.config.ini
+/stats.json
 .*.swp
 .*.swo
 .#*
