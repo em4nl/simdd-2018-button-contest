@@ -24,3 +24,14 @@ for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', buttonClickHandler)
   }
 }
+
+window.on_new_ranking = function(ranking) {
+  console.log(ranking)
+}
+
+window.on_new_vote = function(name, votes) {
+  let votesField = document.querySelector(
+    `.ranking tr[data-button-name="${name}"] .votes`
+  )
+  votesField.innerHTML = votes
+}

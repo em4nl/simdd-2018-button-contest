@@ -5,7 +5,7 @@ let overlay = document.querySelector('.info__overlay')
 button.addEventListener('click', open)
 overlay.addEventListener('click', close)
 
-function open() {
+function open() {
   info.classList.add('is-displayed')
   info.offsetHeight
   info.classList.add('is-visible')

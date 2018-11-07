@@ -25,4 +25,4 @@ if ($success === FALSE) {
     die;
 }
 
-echo $stats[$button_id];
+echo $stats[$button_id]['votes'];

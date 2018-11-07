@@ -7,11 +7,11 @@
     </tr>
   </thead>
   <tbody>
-    {% for button in stats %}
-    <tr>
-      <td>{{ button.votes }}</td>
-      <td>{{ button.name }}</td>
-      <td>{{ button.author }}</td>
+    {% for button_name, button in stats %}
+    <tr data-button-name="{{ button_name }}">
+      <td class="votes">{{ button.votes }}</td>
+      <td class="name">{{ button.name }}</td>
+      <td class="author">{{ button.author }}</td>
     </tr>
     {% endfor %}
   </tbody>
