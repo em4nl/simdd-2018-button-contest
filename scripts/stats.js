@@ -1,4 +1,4 @@
-function ajax(options, callback) {
+window.ajax = function ajax(options, callback) {
   var request = new XMLHttpRequest();
   var method = 'GET';
   var url;
@@ -21,7 +21,7 @@ function ajax(options, callback) {
   };
   request.send();
 }
-export function get_ranking(callback) {
+window.get_ranking = function get_ranking(callback) {
   ajax('/stats.json', function(err, res) {
       if (err) {
           callback(err);
@@ -30,7 +30,7 @@ export function get_ranking(callback) {
       }
   });
 }
-export function vote_for(name, callback) {
+window.vote_for = function vote_for(name, callback) {
   ajax({
       url: '/stats.php?vote=' + name,
       method: 'POST',
@@ -42,7 +42,7 @@ export function vote_for(name, callback) {
       }
   });
 }
-export function console_get_ranking() {
+window.console_get_ranking = function console_get_ranking() {
   get_ranking(function(err, ranking) {
       if (err) {
           if ('error' in console) {
@@ -55,7 +55,7 @@ export function console_get_ranking() {
       }
   });
 }
-export function console_vote_for(name) {
+window.console_vote_for = function console_vote_for(name) {
   vote_for(name, function(err, clicks) {
       if (err) {
           if ('error' in console) {
