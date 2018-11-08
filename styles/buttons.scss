@@ -10,12 +10,18 @@
   position: relative;
   width: 100%;
   min-height: 25vh;
-  margin-bottom: 100px;
+  margin-bottom: 1.5rem;
   background: white;
 
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+.stats {
+  margin-bottom: 6rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 @media screen and (min-width: 769px) {
