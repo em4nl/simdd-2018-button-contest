@@ -8,16 +8,16 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST' ||
     die;
 }
 
-$button_id = $_REQUEST['vote'];
+$name = $_REQUEST['vote'];
 $stats_json = file_get_contents(__DIR__ . '/stats.json');
 $stats = json_decode($stats_json, true);
 
-if (!isset($stats[$button_id])) {
+if (!isset($stats[$name])) {
     header('HTTP/1.1 404 Not Found');
     die;
 }
 
-$stats[$button_id]['votes']++;
+$stats[$name]++;
 $stats_json = json_encode($stats, JSON_PRETTY_PRINT);
 $success = file_put_contents(__DIR__ . '/stats.json', $stats_json, LOCK_EX);
 if ($success === FALSE) {
