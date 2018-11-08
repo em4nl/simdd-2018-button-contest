@@ -5,6 +5,7 @@ import './stats'
 import './buttons/tobija.js'
 import './buttons/jonas.js'
 import './buttons/alina.js'
+import './buttons/marvin.js'
 
 function buttonClickHandler() {
   let name = this.getAttribute('data-name')
