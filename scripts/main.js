@@ -2,6 +2,8 @@ import '../styles/main.scss'
 import './info'
 import './stats'
 
+import './buttons/tobija.js'
+
 function buttonClickHandler() {
   let name = this.getAttribute('data-name')
   voteFor(name, (err, ranking) => {

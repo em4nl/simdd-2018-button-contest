@@ -1,0 +1,79 @@
+#tobijas-button {
+  height:100px;
+	padding:0 50px;
+  background-image:linear-gradient(180deg,transparent 0%,#999 0%);
+  /*background-image:linear-gradient(180deg,transparent 0%,#999 0%);*/
+  background-size:fit;
+  font-size:24px;
+  font-family: Helvetica, Arial, sans-serif;
+  border: none;
+  text-transform:uppercase;
+}
+#tobijas-button:hover {
+  cursor:pointer;
+}
+#tobijas-button:focus {
+  outline:none;
+}
+
+.btn-animated {
+  background-color:red;
+}
+#overlay {
+  z-index:1;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background-color:rbga(32,32,32,.95);
+  background-image:url('https://botanicalnative-cbd.ch/wp-content/uploads/2018/02/Gitter_kurz-1.gif');
+  background-size:cover;
+  /*opacity:.8;*/
+}
+#overlay::before {
+  content:"Told you...";
+  position:absolute;
+  top:-50vh;
+  font-family:sans-serif;
+  font-weight:700;
+  font-size:5vw;
+  text-shadow:1px 1px 15px rgba(255,255,255,.25);
+  animation:enter-frame .4s linear normal forwards;
+  color:#000;
+  background-color:#fff;
+  padding:35px;
+  text-transform:uppercase;
+  border:10px solid #000;
+}
+
+@keyframes enter-frame {
+  100% {
+    transform:translateY(75vh);
+  }
+}
+-webkit-@keyframes enter-frame {
+  0% {
+    transform:translateY(0);
+  }
+  100% {
+    transform:translateY(100vh);
+  }
+}
+#close-cross {
+  display:inline-block;
+  transform:rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  color:#000;
+  font-family:sans-serif;
+  font-size:5vw;
+  position:absolute;
+  top:35px;
+  right:35px;
+}
+#close-cross:hover {
+  cursor:pointer;
+}

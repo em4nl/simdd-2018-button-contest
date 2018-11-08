@@ -20,5 +20,4 @@ webpack.config.js
 .DS_Store
 .nvmrc
 wpsync.config.ini
-htaccess.production.marcsiebenhuener.de.txt
-htaccess.siebenhuener.staging.unfun.de.txt
+stats.json

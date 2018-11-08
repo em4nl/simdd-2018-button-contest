@@ -1,4 +1,4 @@
-window.ajax = function ajax(options, callback) {
+function ajax(options, callback) {
   var request = new XMLHttpRequest();
   var method = 'GET';
   var url;
@@ -25,26 +25,28 @@ function responseHandler(callback) {
   return function(err, res) {
     var ranking;
     if (err) {
-      callback(err);
+      callback && callback(err);
     } else {
       ranking = JSON.parse(res);
-      callback(null, ranking);
+      callback && callback(null, ranking);
       if (window.onNewRanking) {
         window.onNewRanking(ranking);
       }
     }
   }
 }
-window.getRanking = function getRanking(callback) {
+export function getRanking(callback) {
   ajax('/stats.json', responseHandler(callback));
 }
-window.voteFor = function voteFor(name, callback) {
+window.getRanking = getRanking
+export function voteFor(name, callback) {
   ajax({
     url: '/stats.php?vote=' + name,
     method: 'POST',
   }, responseHandler(callback));
 }
-window.consoleGetRanking = function consoleGetRanking() {
+window.voteFor = voteFor
+export function consoleGetRanking() {
   get_ranking(function(err, ranking) {
     if (err) {
       if ('error' in console) {
@@ -57,7 +59,8 @@ window.consoleGetRanking = function consoleGetRanking() {
     }
   });
 }
-window.consoleVoteFor = function consoleVoteFor(name) {
+window.consoleGetRanking = consoleGetRanking
+export function consoleVoteFor(name) {
   vote_for(name, function(err, ranking) {
     if (err) {
       if ('error' in console) {
@@ -70,3 +73,4 @@ window.consoleVoteFor = function consoleVoteFor(name) {
     }
   });
 }
+window.consoleVoteFor = consoleVoteFor
