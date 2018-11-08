@@ -3,6 +3,7 @@ import './info'
 import './stats'
 
 import './buttons/tobija.js'
+import './buttons/jonas.js'
 
 function buttonClickHandler() {
   let name = this.getAttribute('data-name')
