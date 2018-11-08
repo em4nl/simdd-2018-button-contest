@@ -1,0 +1,98 @@
+$alina-primary: #7100ff;
+
+.button-wrapper--alina {
+  color: white;
+  font-family: Avenir bold, sans-serif;
+  background-image: linear-gradient(black 64%, #2800b8 65%);
+  height: 310px;
+
+  h1 {   
+    position: relative;
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: 550;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    vertical-align: middle;
+    top: 20%;
+    left: 19.5%;
+    z-index: 1;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .image {
+    position: absolute;
+    right: 20%;
+    bottom: 0;
+    height: 100%;
+    width: auto;
+    display: none;
+    
+    &.is-active {
+      display: block;
+    }
+  }
+
+  .cta {
+    position: absolute;
+    top: 45%;
+    left: 18%;
+    padding: 19px 22px;
+    transition: all .2s ease;
+    cursor: pointer;
+    
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      border-radius: 28px;
+      background: rgba($alina-primary, 0.5);
+      width: 56px;
+      height: 56px;
+      transition: all .3s ease;
+    }
+
+    span {
+      position: relative;
+      font-size: 16px;
+      line-height: 18px;
+      font-weight: 900;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+    
+    svg {
+      position: relative;
+      top: 0;
+      margin-left: 10px;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke: white;
+      stroke-width: 2;
+      transform: translateX(-5px);
+      transition: all .3s ease;
+    }
+
+    &:hover {
+      &:before {
+        width: 100%;
+        background-color: $alina-primary;
+      }
+      svg {
+        transform: translateX(0);
+      }
+
+      &:active {
+        transform: scale(.96);
+      }
+    }
+  }
+}
