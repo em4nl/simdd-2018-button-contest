@@ -1,3 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Kumar+One+Outline');
+
 .button-wrapper--andre-pasquier {
-  background: red;
+  text-align: center;
+  font-family: 'Kumar One Outline', cursive;
+  @include clearfix;
+
+  background: rgb(131,58,180);
+  background: radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 47%, rgba(252,176,69,1) 100%);
+  
+  h1 {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 5em;
+    color: white;
+  }
+
+  .spalte {
+    float: left;
+    width: 33.3%;
+    padding: 7em 0;
+  
+  }
+  
+  .giphy {
+    width: 250px;
+    height: 250px;
+  }
 }
