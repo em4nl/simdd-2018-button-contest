@@ -1,5 +1,4 @@
 import '../styles/main.scss'
-import './info'
 import './stats'
 
 import './buttons/tobija.js'
@@ -11,14 +10,14 @@ function buttonClickHandler() {
   let name = this.getAttribute('data-name')
   voteFor(name, (err, ranking) => {
     if (err) {
-      let message = `There is no button called "${name}"!`
+      let message = `${name} is not in stats.json!`
       if ('error' in console) {
         console.error(message)
       } else {
         console.log('ERROR: ' + message)
       }
     } else {
-      console.log(`The button called "${name}" has ${ranking[name].votes} clicks already!`)
+      console.log(`${name} has ${ranking[name]} clicks!`)
       updateRanking(ranking)
     }
   })
@@ -33,7 +32,7 @@ for (let i = 0; i < buttons.length; i++) {
 
 function updateVotesForButton(name, votes) {
   let votesField = document.querySelector(
-    `.ranking tr[data-button-name="${name}"] .votes`
+    `.stats__clicks[data-name="${name}"]`
   )
   votesField.innerHTML = votes
 }
@@ -42,7 +41,7 @@ window.updateRanking = function updateRanking(ranking) {
   let key
   for (key in ranking) {
     if (ranking.hasOwnProperty(key)) {
-      updateVotesForButton(key, ranking[key].votes)
+      updateVotesForButton(key, ranking[key])
     }
   }
 }

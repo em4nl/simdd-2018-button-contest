@@ -1,3 +1,5 @@
+import { voteFor } from '../stats'
+
 let startImage = document.querySelector('.start-image')
 
 let animatedImage = document.querySelector(".animated-image")
@@ -24,6 +26,7 @@ function stopAnimation() {
 }
 
 function toggle() {
+  voteFor('Alina')
   if(isAnimationRunning) {
     stopAnimation()
   } else {

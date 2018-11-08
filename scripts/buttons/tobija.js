@@ -29,7 +29,7 @@ function eventFire(el, etype){
 function assignClass() {
   $('#tobijas-button').addClass('tobijas-button-handler');
   $('.tobijas-button-handler').on("click", function(){
-    voteFor('tobijas-button')
+    voteFor('Tobija')
     $(document.body).append('<div id="overlay"></div>');
     $('#overlay').append('<div id="close-cross">+</div>')
     $(document.body).addClass('body-blocked');
