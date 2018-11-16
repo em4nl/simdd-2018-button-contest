@@ -1,6 +1,6 @@
 .button-wrapper--rouven button {
   position: absolute;
-  z-index: 11;
+  z-index: 1;
   font-size: 2rem;
   font-family:'Roboto',sans-serif, bold;
   font-weight: bold;
@@ -14,8 +14,23 @@
 }
 
 .button-wrapper--rouven .reset-button {
-  bottom: 0;
-  right: 0;
+  position: absolute;
+  z-index: 1;
+  font-size: 80px;
+  transform-origin: center center;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  bottom: 25px;
+  left: 25px;
+  width: 50px;
+  height: 50px;
+  transition: transform .5s ease-in-out;
+  cursor: pointer;
+}
+
+.button-wrapper--rouven .reset-button:hover {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
 
 .button-wrapper--rouven button:hover {
