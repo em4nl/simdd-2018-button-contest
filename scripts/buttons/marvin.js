@@ -14,7 +14,6 @@ $(function() {
     $canvas = null,
     canvas = null,
     context = null,
-    vars = null,
     points = 8,
     viscosity = 20,
     mouseDist = 70,
@@ -170,7 +169,7 @@ $(function() {
    */
   function renderCanvas() {
     // rAF
-    var rafID = requestAnimationFrame(renderCanvas)
+    requestAnimationFrame(renderCanvas)
 
     // Clear scene
     context.clearRect(0, 0, $canvas.width(), $canvas.height())
@@ -232,41 +231,14 @@ $(function() {
       for (var i = 0; i < points.length; i++) {
         var p = points[i]
         var nextP = points[i + 1]
-        var val = 30 * 0.552284749831
 
         if (nextP != undefined) {
-          // if (nextP.ix > p.ix && nextP.iy < p.iy) {
-          // p.cx1 = p.x;
-          // p.cy1 = p.y-val;
-          // p.cx2 = nextP.x-val;
-          // p.cy2 = nextP.y;
-          // } else if (nextP.ix > p.ix && nextP.iy > p.iy) {
-          // p.cx1 = p.x+val;
-          // p.cy1 = p.y;
-          // p.cx2 = nextP.x;
-          // p.cy2 = nextP.y-val;
-          // }  else if (nextP.ix < p.ix && nextP.iy > p.iy) {
-          // p.cx1 = p.x;
-          // p.cy1 = p.y+val;
-          // p.cx2 = nextP.x+val;
-          // p.cy2 = nextP.y;
-          // } else if (nextP.ix < p.ix && nextP.iy < p.iy) {
-          // p.cx1 = p.x-val;
-          // p.cy1 = p.y;
-          // p.cx2 = nextP.x;
-          // p.cy2 = nextP.y+val;
-          // } else {
-
           p.cx1 = (p.x + nextP.x) / 2
           p.cy1 = (p.y + nextP.y) / 2
           p.cx2 = (p.x + nextP.x) / 2
           p.cy2 = (p.y + nextP.y) / 2
 
           context.bezierCurveTo(p.x, p.y, p.cx1, p.cy1, p.cx1, p.cy1)
-          // continue;
-          // }
-
-          // context.bezierCurveTo(p.cx1, p.cy1, p.cx2, p.cy2, nextP.x, nextP.y);
         } else {
           nextP = points[0]
           p.cx1 = (p.x + nextP.x) / 2
@@ -276,7 +248,6 @@ $(function() {
         }
       }
 
-      // context.closePath();
       context.fill()
     }
 
