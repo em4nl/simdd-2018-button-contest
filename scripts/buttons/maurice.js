@@ -11,5 +11,5 @@ function clickHandler() {
     image.classList.remove('free-beer')
   }
 }
-button.onclick = clickHandler
-image.onclick = clickHandler
+button.addEventListener('click', clickHandler)
+image.addEventListener('click', clickHandler)
