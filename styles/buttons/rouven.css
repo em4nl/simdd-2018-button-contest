@@ -1,0 +1,25 @@
+.button-wrapper--rouven button {
+  position: absolute;
+  z-index: 11;
+  font-size: 2rem;
+  font-family:'Roboto',sans-serif, bold;
+  font-weight: bold;
+  color: white;
+  transition: color 0.5s;
+  background-image: linear-gradient(#8AE1FF, #E08DFF);
+  border-radius: 40px;
+  padding: 50px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.button-wrapper--rouven .reset-button {
+  bottom: 0;
+  right: 0;
+}
+
+.button-wrapper--rouven button:hover {
+  color: pink;
+  background: white;
+  transition: background 0.5s;
+}

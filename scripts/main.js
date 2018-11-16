@@ -6,6 +6,7 @@ import './buttons/tobija'
 import './buttons/jonas'
 import './buttons/alina'
 import './buttons/marvin'
+import './buttons/rouven'
 
 /*global voteFor*/
 /*global updateRanking*/
