@@ -4,7 +4,7 @@ require_once __DIR__ . '/functions.php';
 
 $context = [];
 
-$participants = [
+$context['participants'] = [
     ['name' => 'tobija', 'display' => 'Tobija'],
     ['name' => 'andre', 'display' => 'André'],
     ['name' => 'jonas', 'display' => 'Jonas'],
@@ -16,7 +16,7 @@ $participants = [
     ['name' => 'maurice', 'display' => 'Maurice'],
 ];
 
-$context['participants'] = $participants;
+shuffle($context['participants']);
 
 $assets_json = my_file_get_contents(__DIR__ . '/webpack-assets.json');
 if ($assets_json !== FALSE) {
