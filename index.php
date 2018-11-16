@@ -8,7 +8,7 @@ $context['participants'] = [
     ['name' => 'tobija', 'display' => 'Tobija'],
     ['name' => 'andre', 'display' => 'André'],
     ['name' => 'jonas', 'display' => 'Jonas'],
-    ['name' => 'alina', 'display' => 'Aline'],
+    ['name' => 'alina', 'display' => 'Alina'],
     ['name' => 'cedrine', 'display' => 'Cédrine'],
     ['name' => 'nathalie', 'display' => 'Nathalie'],
     ['name' => 'marvin', 'display' => 'Marvin'],

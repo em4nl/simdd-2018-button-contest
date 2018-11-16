@@ -7,7 +7,7 @@ $alina-primary: #7100ff;
   height: 310px;
   overflow: hidden;
 
-  h1 {   
+  h1 {
     position: relative;
     font-size: 28px;
     line-height: 32px;
@@ -32,7 +32,7 @@ $alina-primary: #7100ff;
     height: 100%;
     width: auto;
     display: none;
-    
+
     &.is-active {
       display: block;
     }
@@ -45,7 +45,7 @@ $alina-primary: #7100ff;
     padding: 19px 22px;
     transition: all .2s ease;
     cursor: pointer;
-    
+
     &:before {
       content: "";
       position: absolute;
@@ -68,7 +68,7 @@ $alina-primary: #7100ff;
       text-transform: uppercase;
       vertical-align: middle;
     }
-    
+
     svg {
       position: relative;
       top: 0;

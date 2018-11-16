@@ -1,6 +1,5 @@
 import $ from 'jquery'
 let jQuery = $
-import { voteFor } from '../stats'
 
 function myFunction(e) {
   var offsetInfo = jQuery('#tobijas-button').offset(),
@@ -21,7 +20,6 @@ function myFunction(e) {
 function assignClass() {
   $('#tobijas-button').addClass('tobijas-button-handler')
   $('.tobijas-button-handler').on('click', function() {
-    voteFor('tobija')
     $(document.body).append('<div id="overlay"></div>')
     $('#overlay').append('<div id="close-cross">+</div>')
     $(document.body).addClass('body-blocked')

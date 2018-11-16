@@ -25,7 +25,7 @@ function buttonClickHandler() {
   })
 }
 
-let buttons = document.querySelectorAll('button, a')
+let buttons = document.querySelectorAll('button, a, div')
 for (let i = 0; i < buttons.length; i++) {
   if (buttons[i].hasAttribute('data-name')) {
     buttons[i].addEventListener('click', buttonClickHandler)
