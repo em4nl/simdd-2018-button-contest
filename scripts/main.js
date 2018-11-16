@@ -3,10 +3,8 @@ import { consoleError } from './utils'
 import './stats'
 
 import './buttons/tobija'
-import './buttons/andre'
 import './buttons/jonas'
 import './buttons/alina'
-import './buttons/nathalie'
 import './buttons/marvin'
 
 /*global voteFor*/
@@ -25,7 +23,7 @@ function buttonClickHandler() {
   })
 }
 
-let buttons = document.querySelectorAll('button')
+let buttons = document.querySelectorAll('button, a')
 for (let i = 0; i < buttons.length; i++) {
   if (buttons[i].hasAttribute('data-name')) {
     buttons[i].addEventListener('click', buttonClickHandler)
