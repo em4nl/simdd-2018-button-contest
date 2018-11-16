@@ -3,7 +3,7 @@
 	height: 400px;
 	align-items: center;
   justify-content: center;
-    
+
   .btn-liquid {
     display: inline-block;
     position: relative;
@@ -16,7 +16,8 @@
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
-    
+    cursor: pointer;
+
     .inner {
       position: relative;
       z-index: 2;
