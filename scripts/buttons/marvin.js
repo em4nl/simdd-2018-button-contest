@@ -1,11 +1,9 @@
-/* to do: When Button click, Play "http://www.websiteasteroids.com/asteroids.min.js" */
-
 import $ from 'jquery'
 
 let button = document.querySelector('.button-wrapper--marvin button')
 button.addEventListener('click', () => {
   let script = document.createElement('SCRIPT')
-  script.src = 'http://www.websiteasteroids.com/asteroids.min.js'
+  script.src = 'https://buttoncontest.unfun.de/vendor_js/asteroids.min.js'
   document.body.appendChild(script)
 })
 
