@@ -34,6 +34,8 @@
     {% block content %}
     {% endblock %}
 
+    {% include 'info.twig' %}
+
     {% if assets and assets.css %}
       <script src="/build/{{ assets.js|e('html_attr') }}"></script>
     {% elseif assets %}
