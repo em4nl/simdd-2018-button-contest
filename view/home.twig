@@ -3,24 +3,10 @@
 {% block content %}
 
   <div class="buttons">
-    {% include 'buttons/tobija.twig' %}
-    {% include 'stats.twig' with { name: 'tobija', display: 'Tobija' } %}
-    {% include './buttons/button-andre-pasqiuer.twig' %}
-    {% include 'stats.twig' with { name: 'andre', display: 'André' } %}
-    {% include 'buttons/jonas.twig' %}
-    {% include 'stats.twig' with { name: 'jonas', display: 'Jonas' } %}
-    {% include './buttons/alina.twig' %}
-    {% include 'stats.twig' with { name: 'alina', display: 'Alina' } %}
-    {% include './buttons/cedrine.twig' %}
-    {% include 'stats.twig' with { name: 'cedrine', display: 'Cédrine' } %}
-    {% include './buttons/nathalie.twig' %}
-    {% include 'stats.twig' with { name: 'nathalie', display: 'Nathalie' } %}
-    {% include './buttons/marvin.twig' %}
-    {% include 'stats.twig' with { name: 'marvin', display: 'Marvin' } %}
-    {% include './buttons/rouven.twig' %}
-    {% include 'stats.twig' with { name: 'rouven', display: 'Rouven' } %}
-    {% include './buttons/maurice.twig' %}
-    {% include 'stats.twig' with { name: 'maurice', display: 'Maurice' } %}
+    {% for p in participants %}
+      {% include 'buttons/' ~ p.name ~ '.twig' %}
+      {% include 'stats.twig' with { name: p.name, display: p.display } %}
+    {% endfor %}
   </div>
 
 {% endblock %}
