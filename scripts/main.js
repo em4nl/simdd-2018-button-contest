@@ -6,6 +6,10 @@ import './buttons/jonas.js'
 import './buttons/alina.js'
 import './buttons/marvin.js'
 
+/*global voteFor*/
+/*global updateRanking*/
+/*global getRanking*/
+
 function buttonClickHandler() {
   let name = this.getAttribute('data-name')
   voteFor(name, (err, ranking) => {
@@ -31,9 +35,7 @@ for (let i = 0; i < buttons.length; i++) {
 }
 
 function updateVotesForButton(name, votes) {
-  let votesField = document.querySelector(
-    `.stats__clicks[data-name="${name}"]`
-  )
+  let votesField = document.querySelector(`.stats__clicks[data-name="${name}"]`)
   votesField.innerHTML = votes
 }
 
