@@ -1,7 +1,7 @@
-export function consoleError(message) {
+export function consoleError(...stuff) {
   if ('error' in console) {
-    console.error(message)
+    console.error(...stuff)
   } else {
-    console.log('ERROR:', message)
+    console.log('ERROR:', ...stuff)
   }
 }

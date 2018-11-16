@@ -13,7 +13,7 @@ function ajax(options, callback) {
   request.open(method, url, true)
   request.onload = function() {
     if (request.status !== 200) {
-      callback(request.status)
+      callback(request.status, request.responseText)
     } else {
       callback(null, request.responseText)
     }
@@ -27,7 +27,7 @@ function responseHandler(callback) {
   return function(err, res) {
     var ranking
     if (err) {
-      callback && callback(err)
+      callback && callback(err, res)
     } else {
       ranking = JSON.parse(res)
       callback && callback(null, ranking)
@@ -54,7 +54,7 @@ window.voteFor = voteFor
 export function consoleGetRanking() {
   getRanking(function(err, ranking) {
     if (err) {
-      consoleError(err)
+      consoleError(err, ranking)
     } else {
       console.log(ranking)
     }
@@ -64,7 +64,7 @@ window.consoleGetRanking = consoleGetRanking
 export function consoleVoteFor(name) {
   voteFor(name, function(err, ranking) {
     if (err) {
-      consoleError(err)
+      consoleError(err, ranking)
     } else {
       console.log(ranking[name].votes)
     }
