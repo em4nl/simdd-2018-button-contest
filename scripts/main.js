@@ -3,6 +3,7 @@ import { consoleError } from './utils'
 import './stats'
 
 import './buttons/tobija.js'
+import './buttons/andre.js'
 import './buttons/jonas.js'
 import './buttons/alina.js'
 import './buttons/marvin.js'
