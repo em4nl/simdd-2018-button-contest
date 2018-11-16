@@ -7,6 +7,7 @@ import './buttons/jonas'
 import './buttons/alina'
 import './buttons/marvin'
 import './buttons/rouven'
+import './buttons/maurice'
 
 /*global voteFor*/
 /*global updateRanking*/

@@ -29,7 +29,12 @@ function responseHandler(callback) {
     if (err) {
       callback && callback(err, res)
     } else {
-      ranking = JSON.parse(res)
+      try {
+        ranking = JSON.parse(res)
+      } catch (err) {
+        callback && callback(err, res)
+        return
+      }
       callback && callback(null, ranking)
       if (window.onNewRanking) {
         window.onNewRanking(ranking)
