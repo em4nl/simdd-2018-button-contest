@@ -1,9 +1,9 @@
 <div class="stats">
-  <div class="stats__name">{{ name }}</div>
-  {% if not stats or (not stats[name] and stats[name] != 0) %}
+  <div class="stats__name">{{ display }}</div>
+  {% if not stats or not stats[name] and not stats[name] is same as(0) %}
     <div class="stats__count">
       <p style="font-size:1rem;color:red;font-family:'Comic Sans MS',fantasy;text-align:center;">
-        stats for "{{ name }}" could not be loaded, make sure you have a stats.json with a "{{ name }}" key in it!
+        stats for {{ display }} could not be loaded, make sure you have a stats.json with a "{{ name }}" key in it!
       </p>
     </div>
   {% else %}
