@@ -2,11 +2,12 @@ import '../styles/main.scss'
 import { consoleError } from './utils'
 import './stats'
 
-import './buttons/tobija.js'
-import './buttons/andre.js'
-import './buttons/jonas.js'
-import './buttons/alina.js'
-import './buttons/marvin.js'
+import './buttons/tobija'
+import './buttons/andre'
+import './buttons/jonas'
+import './buttons/alina'
+import './buttons/nathalie'
+import './buttons/marvin'
 
 /*global voteFor*/
 /*global updateRanking*/
