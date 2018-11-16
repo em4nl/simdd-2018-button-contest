@@ -1,76 +1,73 @@
+import { consoleError } from './utils'
+
 function ajax(options, callback) {
-  var request = new XMLHttpRequest();
-  var method = 'GET';
-  var url;
+  var request = new XMLHttpRequest()
+  var method = 'GET'
+  var url
   if (typeof options === 'string') {
-    url = options;
+    url = options
   } else {
-    method = options.method || method;
-    url = options.url;
+    method = options.method || method
+    url = options.url
   }
-  request.open(method, url, true);
+  request.open(method, url, true)
   request.onload = function() {
     if (request.status !== 200) {
-      callback(request.status);
+      callback(request.status)
     } else {
-      callback(null, request.responseText);
+      callback(null, request.responseText)
     }
-  };
+  }
   request.onerror = function() {
-    callback(1);
-  };
-  request.send();
+    callback(1)
+  }
+  request.send()
 }
 function responseHandler(callback) {
   return function(err, res) {
-    var ranking;
+    var ranking
     if (err) {
-      callback && callback(err);
+      callback && callback(err)
     } else {
-      ranking = JSON.parse(res);
-      callback && callback(null, ranking);
+      ranking = JSON.parse(res)
+      callback && callback(null, ranking)
       if (window.onNewRanking) {
-        window.onNewRanking(ranking);
+        window.onNewRanking(ranking)
       }
     }
   }
 }
 export function getRanking(callback) {
-  ajax('/stats.json', responseHandler(callback));
+  ajax('/stats.json', responseHandler(callback))
 }
 window.getRanking = getRanking
 export function voteFor(name, callback) {
-  ajax({
-    url: '/stats.php?vote=' + name,
-    method: 'POST',
-  }, responseHandler(callback));
+  ajax(
+    {
+      url: '/stats.php?vote=' + name,
+      method: 'POST',
+    },
+    responseHandler(callback)
+  )
 }
 window.voteFor = voteFor
 export function consoleGetRanking() {
-  get_ranking(function(err, ranking) {
+  getRanking(function(err, ranking) {
     if (err) {
-      if ('error' in console) {
-        console.error(err);
-      } else {
-        console.log('ERROR', err);
-      }
+      consoleError(err)
     } else {
-      console.log(ranking);
+      console.log(ranking)
     }
-  });
+  })
 }
 window.consoleGetRanking = consoleGetRanking
 export function consoleVoteFor(name) {
-  vote_for(name, function(err, ranking) {
+  voteFor(name, function(err, ranking) {
     if (err) {
-      if ('error' in console) {
-        console.error(err);
-      } else {
-        console.log('ERROR', err);
-      }
+      consoleError(err)
     } else {
-      console.log(ranking[name].votes);
+      console.log(ranking[name].votes)
     }
-  });
+  })
 }
 window.consoleVoteFor = consoleVoteFor

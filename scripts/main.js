@@ -1,4 +1,5 @@
 import '../styles/main.scss'
+import { consoleError } from './utils'
 import './stats'
 
 import './buttons/tobija.js'
@@ -14,14 +15,9 @@ function buttonClickHandler() {
   let name = this.getAttribute('data-name')
   voteFor(name, (err, ranking) => {
     if (err) {
-      let message = `${name} is not in stats.json!`
-      if ('error' in console) {
-        console.error(message)
-      } else {
-        console.log('ERROR: ' + message)
-      }
+      consoleError(`"${name}" is not in stats.json!`)
     } else {
-      console.log(`${name} has ${ranking[name]} clicks!`)
+      console.log(`"${name}" has ${ranking[name]} clicks!`)
       updateRanking(ranking)
     }
   })
@@ -36,7 +32,11 @@ for (let i = 0; i < buttons.length; i++) {
 
 function updateVotesForButton(name, votes) {
   let votesField = document.querySelector(`.stats__clicks[data-name="${name}"]`)
-  votesField.innerHTML = votes
+  if (!votesField) {
+    consoleError(`There is no click counter for "${name}"!`)
+  } else {
+    votesField.innerHTML = votes
+  }
 }
 
 window.updateRanking = function updateRanking(ranking) {
