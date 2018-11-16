@@ -1,4 +1,5 @@
 <?php
+include_once __DIR__ . '/functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' ||
     !isset($_REQUEST['vote']) ||
@@ -9,10 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST' ||
 }
 
 $name = $_REQUEST['vote'];
-$stats_json = file_get_contents(__DIR__ . '/stats.json');
-$stats = json_decode($stats_json, true);
+$stats_json = my_file_get_contents(__DIR__ . '/stats.json');
+if ($stats_json !== FALSE) {
+    $stats = json_decode($stats_json, true);
+}
 
-if (!isset($stats[$name])) {
+if (!isset($stats) || !isset($stats[$name])) {
     header('HTTP/1.1 404 Not Found');
     die;
 }

@@ -1,4 +1,12 @@
 <div class="stats">
   <div class="stats__name">{{ name }}</div>
-  <div class="stats__count"><span class="stats__clicks" data-name="{{ name }}">{{ stats[name] }}</span> Clicks</div>
+  {% if not stats or not stats[name] %}
+    <div class="stats__count">
+      <p style="font-size:1rem;color:red;font-family:'Comic Sans MS',fantasy;text-align:center;">
+        stats for "{{ name }}" could not be loaded, make sure you have a stats.json with a "{{ name }}" key in it!
+      </p>
+    </div>
+  {% else %}
+    <div class="stats__count"><span class="stats__clicks" data-name="{{ name }}">{{ stats[name] }}</span> Clicks</div>
+  {% endif %}
 </div>

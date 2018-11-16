@@ -8,7 +8,7 @@
     <title>Buttons</title>
     <meta name="description" content="Buttons" />
 
-    {% if assets.css %}
+    {% if assets and assets.css %}
       <link
         rel="stylesheet"
         href="/build/{{ assets.css|e('html_attr') }}"
@@ -20,12 +20,23 @@
     ></script>
   </head>
   <body>
+    {% if not assets %}
+      <p style="font-size:2rem;color:red;font-family:'Comic Sans MS',fantasy;text-align:center;">
+        webpack-assets.json could not be loaded, make sure to make a `npm build`!
+      </p>
+    {% endif %}
+    {% if not stats %}
+      <p style="font-size:2rem;color:red;font-family:'Comic Sans MS',fantasy;text-align:center;">
+        stats.json could not be loaded, you'll have to create it first
+      </p>
+    {% endif %}
+
     {% block content %}
     {% endblock %}
 
-    {% if assets.css %}
+    {% if assets and assets.css %}
       <script src="/build/{{ assets.js|e('html_attr') }}"></script>
-    {% else %}
+    {% elseif assets %}
       <script src="{{ assets.js|e('html_attr') }}"></script>
     {% endif %}
   </body>
