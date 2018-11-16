@@ -38,7 +38,7 @@ function responseHandler(callback) {
   }
 }
 export function getRanking(callback) {
-  ajax('/stats.json', responseHandler(callback))
+  ajax('/stats.json?_=' + Date.now(), responseHandler(callback))
 }
 window.getRanking = getRanking
 export function voteFor(name, callback) {
